@@ -62,7 +62,7 @@ This project explores **Graph Mining**, **Clustering**, and **Recommender System
 
 ```bash
 # Clone the repository
-git clone https://github.com/YaswanthReddy/data-mining-project.git
+git clone https://github.com/yaswanthreddyyyr/CineGraph.git
 cd data-mining-project
 
 # Create virtual environment
