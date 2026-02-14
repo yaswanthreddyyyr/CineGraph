@@ -76,12 +76,7 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-## Checkpoints
 
-- [x] **Checkpoint 1**: Dataset Selection and EDA *(Current)*
-- [ ] **Checkpoint 2**: Frequent Itemset & Graph Mining
-- [ ] **Checkpoint 3**: Advanced Recommender Models
-- [ ] **Checkpoint 4**: Comparative Analysis and Final Report
 
 ## Author
 
