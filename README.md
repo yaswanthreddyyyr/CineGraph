@@ -21,7 +21,9 @@ The analysis finds that meaningful genre-based user personas can be identified a
 
 - Dataset: MovieLens 25M
 - Source: [GroupLens MovieLens 25M](https://grouplens.org/datasets/movielens/25m/)
-- Included files: ratings, movies, links, tags, and genome metadata in [data/ml-25m](data/ml-25m)
+- The raw dataset is not committed to GitHub.
+- For automatic download and extraction, run [checkpoints/checkpoint_1.ipynb](checkpoints/checkpoint_1.ipynb) first.
+- Checkpoint 1 downloads MovieLens 25M into `data/` when files are missing.
 - Basic preprocessing done in notebooks:
   - timestamp parsing
   - user/movie filtering for modeling subsets
@@ -44,7 +46,7 @@ This is the required method to capture all package versions from the Colab runti
 
 1. Create and activate a Python environment.
 2. Install dependencies from [requirements.txt](requirements.txt).
-3. Ensure MovieLens data is present under [data/ml-25m](data/ml-25m).
+3. Run [checkpoints/checkpoint_1.ipynb](checkpoints/checkpoint_1.ipynb) to download/extract data into `data/` if needed.
 4. Review progression notebooks in order:
 	- [checkpoints/checkpoint_1.ipynb](checkpoints/checkpoint_1.ipynb)
 	- [checkpoints/checkpoint_2.ipynb](checkpoints/checkpoint_2.ipynb)
@@ -91,22 +93,7 @@ For the complete dependency list, see [requirements.txt](requirements.txt).
 │   ├── checkpoint_1.ipynb
 │   └── checkpoint_2.ipynb
 └── data/
-	 ├── ml-25m/
-	 │   ├── genome-scores.csv
-	 │   ├── genome-tags.csv
-	 │   ├── links.csv
-	 │   ├── movies.csv
-	 │   ├── ratings.csv
-	 │   ├── README.txt
-	 │   └── tags.csv
-	 ├── ml-25m.zip
-	 ├── ml-latest-small/
-	 │   ├── links.csv
-	 │   ├── movies.csv
-	 │   ├── ratings.csv
-	 │   ├── README.txt
-	 │   └── tags.csv
-	 └── ml-small.zip
+	 └── ml-25m/   # download locally; not committed to GitHub
 ```
 
 ## Author
