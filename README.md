@@ -83,19 +83,30 @@ For the complete dependency list, see [requirements.txt](requirements.txt).
 
 ```text
 .
+├── .gitignore
+├── README.md
 ├── main_notebook.ipynb
+├── requirements.txt
 ├── checkpoints/
 │   ├── checkpoint_1.ipynb
 │   └── checkpoint_2.ipynb
-├── CineGraph_Final_Report.ipynb
-├── Dataset_Selection_EDA.ipynb
-├── RQ_Formation.ipynb
-├── generate_two_rq_pitch_deck.py
-├── requirements.txt
-├── README.md
 └── data/
 	 ├── ml-25m/
-	 └── ml-latest-small/
+	 │   ├── genome-scores.csv
+	 │   ├── genome-tags.csv
+	 │   ├── links.csv
+	 │   ├── movies.csv
+	 │   ├── ratings.csv
+	 │   ├── README.txt
+	 │   └── tags.csv
+	 ├── ml-25m.zip
+	 ├── ml-latest-small/
+	 │   ├── links.csv
+	 │   ├── movies.csv
+	 │   ├── ratings.csv
+	 │   ├── README.txt
+	 │   └── tags.csv
+	 └── ml-small.zip
 ```
 
 ## Author
