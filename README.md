@@ -1,91 +1,103 @@
-# Data Mining Project: Recommender Systems and Graph Mining on MovieLens
+# CineGraph: Understanding User Taste Through Genre Patterns
 
-## Project Overview
+CineGraph analyzes movie-rating behavior to understand how user taste clusters emerge from genre preferences and how those clusters relate to recommendation quality under extreme sparsity. The project combines exploratory data mining, user segmentation, and collaborative filtering to produce practical guidance for building better recommendation systems.
 
-This project explores **Graph Mining**, **Clustering**, and **Recommender Systems** using the **MovieLens 32M / 25M** dataset. The goal is to analyze user-movie interactions, extract meaningful communities, and build personalized recommendation models using both course-taught techniques and advanced methods.
+## Start Here
+
+- Main deliverable notebook: [main_notebook.ipynb](main_notebook.ipynb)
+- Project video: [https://youtu.be/cnrTiw0UEc4?si=mjIDUDf3VAhQOOvY](https://youtu.be/cnrTiw0UEc4?si=mjIDUDf3VAhQOOvY)
 
 ## Research Questions
 
-1. **How does data sparsity affect the performance of collaborative filtering vs. graph-based methods?**
-2. **Can community detection (clustering) on the user-movie graph identify distinct taste groups?**
-3. **Do temporal dynamics (changing user preferences) significantly impact recommendation accuracy?**
-4. **Can we mitigate popularity bias using hybrid recommendation approaches?**
+1. Do genre preference patterns form interpretable user taste personas?
+2. Under extreme sparsity, does Truncated SVD outperform Item-KNN, and where does each method fail?
+3. How does model performance vary across user segments discovered through clustering?
 
-## Dataset
+## Results Summary
 
-**MovieLens 25M** (approximating the 32M version mentioned) - A stable benchmark dataset for recommender systems.
+The analysis finds that meaningful genre-based user personas can be identified and used to explain recommendation behavior. In a matrix with more than 99.7% sparsity, both SVD and Item-KNN improve over a baseline, but SVD delivers stronger practical performance because it maintains near-complete coverage while preserving competitive error metrics.
 
-| Attribute | Value |
-|-----------|-------|
-| Source | [GroupLens Research](https://grouplens.org/datasets/movielens/25m/) |
-| Size | 25 Million ratings |
-| Users | ~162,000 |
-| Movies | ~62,000 |
-| Tags | ~1 Million genome tags |
-| License | Research Use |
+## Data
 
-## Techniques
+- Dataset: MovieLens 25M
+- Source: [GroupLens MovieLens 25M](https://grouplens.org/datasets/movielens/25m/)
+- Included files: ratings, movies, links, tags, and genome metadata in [data/ml-25m](data/ml-25m)
+- Basic preprocessing done in notebooks:
+  - timestamp parsing
+  - user/movie filtering for modeling subsets
+  - genre feature engineering and normalization for clustering
 
-### Course Techniques
-- **Frequent Itemset Mining** (Apriori/FP-Growth on viewing history)
-- **Graph Mining** (User-Movie Bipartite Graph, Community Detection)
-- **Clustering** (K-Means on User/Movie Embeddings)
-- **Text Mining** (Tag/Genre Analysis with TF-IDF)
-- **LSH** (Locality Sensitive Hashing for similar item retrieval)
+## Reproducibility
 
-### Beyond-Course Techniques
-- **Matrix Factorization** (SVD, ALS)
-- **Graph Neural Networks (GNNs)** (e.g., LightGCN)
-- **Neural Collaborative Filtering**
-- **Transformer-based Recommendation** (Sequential modeling)
+This project was developed in notebook-first workflow (Colab-compatible) and can be reproduced locally with Jupyter.
 
-## Repository Structure
+Colab environment export used for this deliverable:
 
-```
-├── Checkpoint1_Dataset_Selection_EDA.ipynb   # This checkpoint
-├── README.md                                  # Project overview
-├── requirements.txt                           # Python dependencies
-├── data/                                      # Data directory
-│   ├── ml-25m/                               # Raw data (downloaded by notebook)
-│   └── movielens_cleaned.csv                 # Cleaned subset for analysis
-└── figures/                                   # Generated visualizations
+```python
+!pip freeze > requirements.txt
+from google.colab import files
+files.download('requirements.txt')
+!python --version
 ```
 
-## Getting Started
+This is the required method to capture all package versions from the Colab runtime and place `requirements.txt` at the repo root.
 
-### Prerequisites
+1. Create and activate a Python environment.
+2. Install dependencies from [requirements.txt](requirements.txt).
+3. Ensure MovieLens data is present under [data/ml-25m](data/ml-25m).
+4. Review progression notebooks in order:
+	- [checkpoints/checkpoint_1.ipynb](checkpoints/checkpoint_1.ipynb)
+	- [checkpoints/checkpoint_2.ipynb](checkpoints/checkpoint_2.ipynb)
+5. Run the final curated notebook:
+	- [main_notebook.ipynb](main_notebook.ipynb)
 
-- Python 3.8+
-- Jupyter Notebook
-
-### Installation
+Example setup:
 
 ```bash
-# Clone the repository
 git clone https://github.com/yaswanthreddyyyr/CineGraph.git
-cd data-mining-project
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
+cd CineGraph
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-
-# Launch Jupyter
 jupyter notebook
 ```
 
+Python version used (local dev): 3.12.6
+Python version for submission should be captured from Colab with `!python --version`.
 
+## Key Dependencies
+
+- python 3.12.6
+- pandas >= 1.5.0
+- numpy >= 1.21.0
+- scipy >= 1.9.0
+- scikit-learn >= 1.2.0
+- scikit-surprise >= 1.1.3
+- matplotlib >= 3.5.0
+- seaborn >= 0.12.0
+- networkx >= 3.0
+
+For the complete dependency list, see [requirements.txt](requirements.txt).
+
+## Repository Structure
+
+```text
+.
+├── main_notebook.ipynb
+├── checkpoints/
+│   ├── checkpoint_1.ipynb
+│   └── checkpoint_2.ipynb
+├── CineGraph_Final_Report.ipynb
+├── Dataset_Selection_EDA.ipynb
+├── RQ_Formation.ipynb
+├── generate_two_rq_pitch_deck.py
+├── requirements.txt
+├── README.md
+└── data/
+	 ├── ml-25m/
+	 └── ml-latest-small/
+```
 
 ## Author
 
 Yaswanth Reddy
-
-## Citations
-
-```
-F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. 
-ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: 19:1–19:19. 
-https://doi.org/10.1145/2827872
-```
